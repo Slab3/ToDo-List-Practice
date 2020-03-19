@@ -1,3 +1,6 @@
+* {
+    border-radius: 10px;
+}
 
 body {
     background: #FFD78A url("img/background_nitrofun.jpg") 30% 0;
@@ -54,15 +57,20 @@ button:hover {
     background-color: #fbff79;
 }
 
+
+/*============================LIST ELEMENTS==============================*/
+
+
 .todo {
     padding-left: 0;
 }
 .todo li {
     padding: 1em;
     list-style-type: none;
+
 }
 .todo li:not(:last-child) {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #00686e;
 }
 
 input[type=checkbox] {
@@ -96,7 +104,7 @@ input[type=checkbox]:checked + label:before {
     display: inline-block;
     width: 1px;
     height: 5px;
-    border: solid blue;
+    border: solid #0002ff;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
@@ -128,4 +136,5 @@ input[type=checkbox]:checked + label:before {
     padding: 10px 5px;
     text-align: center;
     border: 3px solid #ffffff;
+    border-radius: 10px;
 }
