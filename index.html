@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo List</title>
+</head>
+<body>
+<div class="container">
+
+    <div class="todo_list">
+        <h1>ToDo List Практика</h1>
+        <div class="create_new_todo">
+            <input type="text" class="message" placeholder="Добавить элемент в список">
+            <button class="add">Добавить</button>
+        </div>
+        <br>
+
+        <input type="text" id="text-to-find" value="" placeholder="Введите текст для поиска">  <!--поиск на странице-->
+        <input class="search_input" type="button" onclick="javascript: FindOnPage('text-to-find'); return false;" value="Искать элемент"/>
+
+        <div class="wrapper">
+            <ul class="todo" ></ul>
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    let lastResFind=""; // последний удачный результатz
+    let copy_page=""; // копия страницы в ихсодном виде
+    function TrimStr(s) {
+        s = s.replace( /^\s+/g, '');
+        return s.replace( /\s+$/g, '');
+    }
+    function FindOnPage(inputId) { //ищет текст на странице, в параметр передается ID поля для ввода
+        let obj = window.document.getElementById(inputId);
+        let textToFind;
+
+        if (obj) {
+            textToFind = TrimStr(obj.value);//обрезаем пробелы
+        } else {
+            alert("Введенная фраза не найдена");
+            return;
+        }
+        if (textToFind == "") {
+            alert("Вы ничего не ввели");
+            return;
+        }
+
+        if(document.body.innerHTML.indexOf(textToFind)=="-1")
+            alert("Ничего не найдено, проверьте правильность ввода!");
+
+        if(copy_page.length>0)
+            document.body.innerHTML=copy_page;
+        else copy_page=document.body.innerHTML;
+
+
+        document.body.innerHTML = document.body.innerHTML.replace(eval("/name="+lastResFind+"/gi")," ");//стираем предыдущие якори для скрола
+        document.body.innerHTML = document.body.innerHTML.replace(eval("/"+textToFind+"/gi"),"<a name="+textToFind+" style='background:red'>"+textToFind+"</a>"); //Заменяем найденный текст ссылками с якорем;
+        lastResFind=textToFind; // сохраняем фразу для поиска, чтобы в дальнейшем по ней стереть все ссылки
+        window.location = '#'+textToFind;//перемещаем скрол к последнему найденному совпадению
+    }
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
