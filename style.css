@@ -120,3 +120,12 @@ input[type=checkbox]:checked + label:before {
  max-width: 40px;
 
 }
+
+.commands-for-user {
+    max-width: 400px;
+    font-size: 13px;
+    margin: 15px auto;
+    padding: 10px 5px;
+    text-align: center;
+    border: 3px solid #ffffff;
+}
