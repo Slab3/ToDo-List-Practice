@@ -8,6 +8,12 @@ if (localStorage.getItem('todo')){
     todoList= JSON.parse(localStorage.getItem('todo'));
     displayMessages();
 }
+
+
+// addButton.addEventListener('keydown,', function(e){
+//     if (e.keyCode === 13) {console.log(this.value);}
+
+
 addButton.addEventListener('click', function(){
     if(!addMessage.value) return;
     let newTodo = {
